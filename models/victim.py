@@ -17,7 +17,7 @@ class Victim(BaseModel, Base):
         #places = relationship("Place", backref="cities", cascade="delete")
     else:
         state_id = ""
-        name = 0
+        value = 0
 
     def __init__(self, *args, **kwargs):
         """initializes city"""

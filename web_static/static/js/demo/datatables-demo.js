@@ -1,7 +1,7 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
   $.ajax({
-              url: 'http://0.0.0.0:5000/api/v1/victims',
+              url: 'http://localhost:63342/recruitment/web_static/data.txt',
               dataType: 'json',
               success: function(json){
                    $('#dataTable').DataTable( {

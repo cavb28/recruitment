@@ -4,7 +4,7 @@ Contains the class DBStorage
 """
 
 import models
-
+from collections import defaultdict
 from models.base_model import BaseModel, Base
 from models.victim import Victim
 from models.state import State
@@ -84,20 +84,23 @@ class DBStorage:
             return None
 
     def exec(self):
-        victms_list = {}
+        victms_list = defaultdict(list)
         conn = self.__engine.connect()
         result = conn.execute("CALL GetAllVictims()")
+        print(result)
         for element in result:
+            dict_tpl = {}
             dict_tpl = dict(element)
+            print(dict(element))
             index = 0
             for k, v in dict_tpl.items():
+                print(k, v)
                 if isinstance(v, str):
-                    victms_list[k] = v
+                    victms_list[k].append(v)
                 else:
-                    victms_list[k] = int(v)
+                    victms_list[k].append(int(v))
 
-
-
+        print(victms_list)
             #victms_list.append(dict(element))
 
         conn.close()

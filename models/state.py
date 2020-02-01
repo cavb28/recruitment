@@ -17,6 +17,7 @@ class State(BaseModel, Base):
         victims = relationship("Victim", backref="state", cascade="delete")
     else:
         name = ""
+        victims = 0
 
     def __init__(self, *args, **kwargs):
         """initializes state"""
